@@ -1,0 +1,5 @@
+Ajustar a data para 5 dias da data atual em rest.test.js
+
+Comandos para execurar os tests
+npm run test:coverage
+npm t

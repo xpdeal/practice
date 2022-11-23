@@ -1,0 +1,22 @@
+Codigo do professor
+https://github.com/jether2011/digitalinnovation
+video de configurar Kotlin
+https://www.youtube.com/watch?v=xRBd2l580Ac
+CLI web 
+https://play.kotlinlang.org/
+
+Tipos variaveis e constantes
+
+var 
+val
+const val //constante
+
+fun //cria uma função
+main //declara o nome
+()// o que vamos passar pra função
+{}// o que vai ser executado
+
+//exemplo 
+fun somar(x: Int, y: Int){
+    return x + y
+}

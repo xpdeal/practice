@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-pod
+  labels:
+    app: label-app
+spec:
+  containers:
+  - name: app-pod-container
+    image: elvis7t/app_curso_online:1.1        
+    ports:
+      - containerPort: 80
+    envFrom:
+      - configMapRef:
+          name: app-configmap  

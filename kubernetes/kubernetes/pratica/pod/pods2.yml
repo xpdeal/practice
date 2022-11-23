@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-volume
+  labels:
+    name: pod-volume
+spec:
+  containers:
+    - name: bd-pod-container
+      image: elvis7t/mysql:1.1 
+    - name: app-pod-container
+      image: elvis7t/app_curso_online:1.1          
+      ports:
+        - containerPort: <Port>

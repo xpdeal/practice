@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li class="convidado">
+            Nome <span class="nome">Douglas</span>,
+            idade <span class="idade">23</span>
+        </li>
+        <li class="convidado">
+            Nome <span class="nome">Daniel</span>,
+            idade <span class="idade">42</span>
+        </li>    
+        <li class="convidado">
+            Nome <span class="nome">Marcos</span>,
+            idade <span class="idade">27</span>
+        </li>    
+        <li class="convidado">
+            Nome <span class="nome">Flávio</span>,
+            idade <span class="idade">18</span>
+        </li>
+    
+        Total das idades: <span class="total"></span>
+    </ul>
+    
+    <script>
+
+        var lis = document.querySelectorAll('li');
+    
+        for(var i = 0; i < lis.length; i++) {
+    
+            lis[i].addEventListener('click', function() {
+    
+                // ela deseja exibir o conteúdo da li no clique
+                alert(this.textContent);
+            });
+        }
+        // Todo evento disparado em JavaScript possui um contexto que é acessível 
+        // através da função executada quando o evento for disparado.Na função, 
+        // acessamos o contexto através do objeto implícito this. Ele é uma 
+        // referência para o elemento do DOM que esta recebendo o evento, logo, 
+        // sua natureza é dinâmica, ou seja, se clicarmos no primeiro elemento 
+        // da lista o this será o primeiro elemento, se clicarmos no último ele
+        //  será o último. É a natureza dinâmica do this que nos permite utilizar 
+        // a mesma função em diferentes contextos.
+    </script>
+</body>
+</html>

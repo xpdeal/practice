@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+data:
+  DB_HOSTNAME: mysql:3306
+  DB_USERNAME: db_user
+  DB_PASSWORD: db_user_pass
+  DB_DATABASE: app_db

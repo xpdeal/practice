@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  web:
+    container_name: php-js
+    image: php:8.0-apache
+    volumes: 
+      - ../app/:/var/www/html
+    ports: 
+      - 86:80
+    networks:  
+    - web
+
+networks: 
+  web: 
+    driver: "bridge"
+

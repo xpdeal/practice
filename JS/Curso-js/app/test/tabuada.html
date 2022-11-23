@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<button class="botao">Calcula</button>
+<input class="numero">
+<input class="tabuada">
+<span class="resultado"></span>
+
+<script>
+
+    // var botao = document.querySelector('.botao');
+    // var numero = document.querySelector('.numero');
+    // var tabuada = document.querySelector('.tabuada');
+    // var resultado = document.querySelector('.resultado');
+
+    // botao.addEventListener('click', function() {
+
+    //     resultado.textContent = numero.value * tabuada.value;
+    //     botao.reset();
+
+    // });
+    // Ao invés de escrevermos toda vez document.querySelector podemos criar 
+    // uma função que funciona como atalho para ele:
+    // Para quem não conhece JavaScript, lendo o nome da função já faz ideia do que ela faz, no caso, ela busca um elemento.
+    // Podemos deixar mais claro ainda o cálculo da tabuada isolando a lógica em uma função:
+    
+    function buscaElemento(seletor) {
+        return document.querySelector(seletor);
+    }
+
+    function aplicaTabuada(numero, tabuada) {
+
+        return numero * tabuada;
+    }
+
+    var botao = buscaElemento('.botao');
+    var numero = buscaElemento('.numero');
+    var tabuada = buscaElemento('.tabuada');
+    var resultado = buscaElemento('.resultado');
+
+    botao.addEventListener('click', function() {
+
+        resultado.textContent = aplicaTabuada(numero.value, tabuada.value);
+
+    });
+    
+    // Muitas vezes pode ser que criar funções aqui ou ali possa estar aumentando 
+    // as linhas de código que resolvem nosso problema. No entanto, quando esse 
+    // código extra visa melhorar a sua legibilidade e manutenção, ele é muito 
+    // bem-vindo!
+
+
+
+</script>
+</body>
+</html>

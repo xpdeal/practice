@@ -1,0 +1,54 @@
+version: '3.7'
+services:
+  web:
+    container_name: php-container
+    image: php:7.2-apache
+    restart: always
+    volumes:
+      - ./app:/var/www/html    
+    ports:
+      - 85:80
+    networks:
+      - curso
+
+  mysql:
+    image: 'mysql/mysql-server:8.0'
+    container_name: mysql-container
+    command: --default-authentication-plugin=mysql_native_password    
+    restart: always    
+    environment:      
+      MYSQL_ROOT_PASSWORD: my_secret_password
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_user_pass                              
+    volumes:
+      - ./db/data:/var/lib/mysql    
+    ports: 
+      - '3306:3306'
+    networks:
+      - curso
+  
+
+  phpmyadmin:
+      image: phpmyadmin
+      restart: always    
+      links:
+      - db    
+      environment:
+        PMA_HOST: db
+        PMA_PORT: 3306
+        PMA_ARBITRARY: 1
+      ports:
+        - "8080:80"      
+      depends_on:
+        - mysql
+      networks:  
+        - curso
+      volumes:
+        dbdata:
+
+networks:
+  curso:
+    driver: "bridge"        
+
+    

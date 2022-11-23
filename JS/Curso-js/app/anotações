@@ -1,0 +1,139 @@
+DOM (Document Object Model), expresentação do HTML para o nosso JavaScript, 
+acessível por uma palava do JavaScript chamada document.
+
+console do navegador
+>_ document
+>_ document.querySelector("h1") seleciona tag
+trocar string com js exemplo{
+//pega o elemento html ou class
+var titulo = document.querySelector(".titulo");
+//pega o elemento
+titulo.textContent = "String que vai aparecer no lugar";
+}
+Pegar o texto de um  elemento .textContent
+var titulo = document.querySelector(".titulo"); // .titulo pega a classe 
+var titulo = document.querySelector("h1");
+console.log(titulo.textContent);
+
+//função que pega casas decimais conforme determinado
+tdImc.textContent = imc.toFixed(2);
+
+for(var i = 0; i <10; i++) {
+    console.log([i]);
+}
+
+//função que adiciona uma classe no caso foi criada do css
+paciente.classList.add("paciente-invalido");
+// função que manipula o stilo
+paciente.style.backgroundColor = "lightcoral";
+
+//função nomiada que escuta evento
+titulo.addEventListener("click")
+
+//exemplo defunç ão anonima que é passada como parametro de
+titulo.addEventListener("click", function (){
+    console.log("Chamando uma função anonima");
+});
+
+//Para corrigirmos o código, basta retirarmos os parênteses: botaoHandler()
+botao.addEventListener('click', botaoHandler);
+// Veja que não estamos mais chamando a função, mas 
+// passando-a por inteiro para o evento click . 
+// Quando o botão for clicado, por debaixo dos panos, 
+// o navegador executará botaoHandler() para nós.
+
+// O Javascript possuí dois tipos de funções, as funções anônimas e as funções nomeadas.
+
+//  As funções nomeadas, como o próprio nome diz, são as funções que levam um nome em 
+//  sua criação e que podem ser invocadas posteriormente, como a função mostraMensagem:
+
+function mostraMensagem(){
+    console.log("Fui clicado");
+}
+
+// Já as funções anônimas, são funções que não tem nome e só são chamadas no contexto aonde 
+// foram declaradas. Elas são muito usadas em conjunto com a função addEventListener(), onde 
+// normalmente a ação que desejamos chamar só deve ser chamada naquele local.
+
+titulo.addEventListener("click", function(){
+    console.log("Fui clicado");
+
+
+// ##Função Anonima é passada inteira por parametro sem ()
+// Por ser uma declaração de função, podemos utilizar a mesma 
+// função para outros eventos do sistema. No entanto, quando 
+// não faz muito sentido reaproveitar a função em outros lugares 
+// podemos declará-la na forma anônima
+// quando passarmos o nome de uma função como segundo parâmetro para a 
+// .addEventListener() , pois não usamos os parênteses (), afinal não 
+// queremos invocar a função neste momento, apenas dizer qual função deve
+//  ser chamada quando ocorrer o evento de click.    
+// });
+
+//declarar um array
+var erros = [];
+// a função push
+erros.push("Enviando string para  arrauy");
+//Reseta o form
+form.reset();
+// Reseta os erros do form ao add o paciente
+var msn = document.querySelector("#mensagens-erro");
+// uma propriedade, não uma função, então ela recebe o novo 
+// conteúdo, ou seja, utilizamos um sinal de igual (=):
+msn.innerHTML = "";
+
+// Com a propriedade innerHTML, podemos editar obter o conteúdo 
+// HTML (HTML interno) de um elemento.
+// Para editar o HTML interno, como o innerHTML é uma propriedade, 
+// utilizamos um sinal de igual (=). Fazemos: ObjetoDeUmElementoHTML.innerHTML = "Novo conteúdo"
+
+# dblclick
+//  ! Além dos eventos que já vimos aqui no curso, existem muitos 
+// outros tipos, que variam desde aonde o seu usuário interage com a
+//  página até quando ele altera o tamanho do navegador!
+
+event.target elemento clicado
+
+
+// Para resolver o problema da remoção de pacientes, vamos nos aproveitar de uma característica do JavaScript chamada Event Bubbling,
+
+Regex
+// O primeiro parâmetro é o padrão (o texto da expressão regular, o que deve ser buscado)
+//  e o segundo parâmetro são uma ou mais flags (representando como queremos que a expressão 
+//  regular busque).
+// O primeiro parâmetro que devemos passar para o construtor é o padrão (o texto da expressão regular,
+//  o que deve ser buscado) e o segundo parâmetro são uma ou mais flags (representando como queremos 
+//  que a expressão regular busque). Por exemplo, podemos definir que não queremos que haja distinção
+// entre letras maiúsculas e minúsculas, através da flag i.
+
+// Mas há um modo de fazer essa comparação sem a necessidade de utilizar expressões regulares! Podemos
+//  utilizar a função substring, que recebe dois parâmetros, fazendo com que ela devolva parte da string,
+//  com o tamanho definido nos parâmetros. O primeiro parâmetro é o início, começando do 0 (que representa 
+//  o primeiro caractere). O segundo parâmetro define o fim (exclusivo, mostramos até o penúltimo caractere). 
+//  Por exemplo:
+
+// var string = "Alura";
+// var resultado = string.substring(1, 4);
+
+// Mas e a distinção entre letras maiúsculas e minúsculas? Nesse caso não temos distinção entre 
+// letras maiúsculas e minúsculas, mas para contornar isso, antes de compará-las, podemos colocar
+//  as duas strings em letras minúsculas, para efetuar a comparação entre elas em seguida:
+
+// var comparavel = nome.substr(0, this.value.length);
+// var comparavelMinusculo = comparavel.toLowerCase();
+// var valorDigitadoMinusculo = this.value.toLowerCase();
+
+if (!(valorDigitadoMinusculo == comparavelMinusculo)) {
+    paciente.classList.add("invisivel");
+} else{
+    paciente.classList.remove("invisivel");
+}
+
+// O objeto XMLHttpRequest é quem é responsável por fazer requisições HTTP 
+// assíncronas com Javascript. Apesar de ter o XML no nome hoje em dia este
+// objeto pode trafegar diversos outros tipos de dados além do XML, este 
+// nome só se manteve devido a um legado histórico.
+// E para instanciar um novo Objeto XMLHttpRequest devemos utilizar a sintaxe 
+// com a palavrinha new :
+
+var xhr = new XMLHttpRequest();

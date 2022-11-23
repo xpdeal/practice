@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-app
+spec:  
+  template:
+    metadata:
+      name: app-pod
+      labels:
+        app: app-pod
+    spec:
+      containers:
+      - name: app-pod-container
+        image: elvis7t/app_curso_online:1.1               
+        ports:
+          - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: app-configmap  
+        livenessProbe: # Se ele nao conseguir realizar  teste apos 3 x ele reicia a app
+          httpGet: #requisicao
+            path: / #para um caminho e/pu arquivo que recebe req e retornar status 200 ou 400
+            port: 80 #na porta
+          periodSeconds: 10 # acada segundo executar o teste
+          failureThreshold: 3 # numero maximo de falhas deste teste
+          initialDelaySeconds: 20 # apartir de 20 segundos antes de exec o teste
+        readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 10
+            failureThreshold: 5 # se nao conseguir apos 3 vezes na 4 ele envia as requisicoes mesmo assim
+            initialDelaySeconds: 3 # Ele começará a executar os testes apenas 3 segundos depois do container ser criado.
+        resources:
+          requests:
+            cpu: 10m    
+  replicas: 3  
+  selector:
+    matchLabels:
+      app: app-pod

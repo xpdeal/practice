@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-db
+spec:  
+  template:
+    metadata:
+      name: dp-pod
+      labels:
+        app: dp-pod
+    spec:
+      containers:
+        - name: bd-pod-container
+          image: elvis7t/mysql:1.1    
+          ports:
+            - containerPort: 3306
+          envFrom:
+          - configMapRef:
+              name: db-configmap
+         
+  replicas: 3    
+  selector:
+    matchLabels:
+      app: dp-pod

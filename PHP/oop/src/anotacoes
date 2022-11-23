@@ -1,0 +1,136 @@
+
+01. Problemas da programação procedural
+
+* Programar utilizando procedimentos executados sequencialmente é chamado de programação procedural.
+* Alguns problemas da programação procedural, como repetição de código e falta da definição 
+explícita de tipos, em alguns casos.
+* Abstração é a prática de abstrair algo do mundo real, trazendo apenas o que for necessário
+para o nosso sistema.
+* Que a Abstração é um pilar da orientação a objetos.
+
+
+02. Introdução à Orientação a Objetos
+
+*Podemos definir tipos complexos com PHP através de classes
+*Objeto (ou instância) é o nome dado para cada valor gerado através de uma classe
+*Objetos possuem valores, e esses valores são chamados de atributos
+*Os atributos dos objetos são individuais, ou seja, não estão atrelados a todas as instâncias
+da mesma classe.
+*Que a palavra new é utilizada para criar um objeto, e devolve o endereço dele
+Este endereço é armazenado em uma variável, e através desta variável podemos 
+acessar o objeto e seus atributos,
+
+
+03. Definindo os comportamentos
+
+Que é possível adicionar comportamento às instâncias das nossas classes
+Que funções definidas em uma classe são chamadas de métodos
+Que variável $this tem a referência para o objeto que chamou o método atual
+
+
+04. Protegendo os nossos dados
+
+Que devemos encapsular os dados dos nossos objetos e expor apenas o necessário
+Que o Encapsulamento é outro pilar da programação orientada a objetos
+Os métodos acessores (getters e setters) e discutimos sobre a sua necessidade
+
+
+05. Mais sobre métodos
+
+Existem métodos no PHP que são executados em momentos específicos, e estes métodos são conhecidos 
+como métodos mágicos ao criar uma instância, o método mágico construtor (__construct) é executado
+Quando uma instância deixa de existir, seu método mágico destrutor (__destruct) é executado
+Podemos ter métodos privados em nossas classes, que nos ajudam a organizar o código
+Também podemos ter membros (atributos e métodos) da própria classe, e não de cada instância
+Membros da classe são chamados de membros estáticos
+
+
+06. Composição de objetos
+
+Uma classe deve ter apenas uma responsabilidade, deve ser concisa
+É possível que um objeto tenha outro objeto como valor de um de seus atributos. 
+Isto é chamado de composição A composição pode (e deve) ser utilizada ao definir 
+uma estrutura complexa de classes
+
+07. Herança
+O que é herança, que é o terceiro pilar da orientação a objetos;
+Vimos como a herança pode nos auxiliar com duplicação de código;
+Aprendemos que para acessar um membro da classe base, podemos utilizar parent::;
+Conhecemos o modificador de acesso protected.
+
+-boa pratica chamar o construtor da classe base no construtor da classe filha
+
+
+08. namespaces (pacotes) e autoload
+    02 Separação física e lógica
+    - classe modelo e serviço
+    03 Namespace raiz
+    - mais de uma classe no mesmo name space  use Alura\Banco\{CPF, Endereco};
+
+09. Classes e metodos abstratos 
+    metodos abstratos não possuem instancia Não pode ser instanciada, pois 
+    ainda não está completa (não é concreta)
+    
+    Quando criamos uma classe abstrata, estamos indicando que ela ainda está 
+    incompleta, e são as classes que estendem dela que irão completá-la
+    
+    Quando queremos obrigar que todas as classes filhas implementam
+     esse método, basta o definirmos como abstrato na classe mãe.    
+
+     para um metodo ser abstrato a classe tbm deve ser
+
+     Entendemos que podemos ter classes que ainda não estão prontas para 
+     serem instanciadas e precisam ser estendidas (classes abstratas);
+     Conhecemos também os métodos abstratos, que são uma forma de "obrigar" 
+     que classes filhas implementem determinado método;
+     Vimos que apenas classes abstratas podem ter métodos abstratos;
+
+     Uma classe de serviço representa uma funcionalidade, 
+     enquanto uma classe de modelo representa algo real 
+     em nosso modelo domínio
+
+10. Polimorfismos 
+
+Vimos que a mesma referência pode se comportar de diversas formas 
+Polimorfismo é a capacidade de um objeto poder ser referenciado	
+de várias formas
+
+dependendo do contexto, e essa é uma explicação simplória do polimorfismo;
+
+Reforçamos nosso conhecimento sobre herança criando diversas novas classes;
+
+Aprendemos o conceito de uma classe de serviço, que representa uma 
+funcionalidade ao invés de representar um modelo de nosso domínio;    
+
+11 Interfaces 
+Todas as classes que decidirem implementar uma interface precisam 
+implementar todos os métodos nela definidos.
+Entendemos o conceito de herança múltipla e o porquê de muitas
+linguagens (PHP inclusive) não a permitirem;
+
+Vimos como "burlar" esta limitação utilizando interfaces;
+
+Aprendemos que no fundo, interfaces são apenas classes abstratas 
+que contém apenas métodos abstratos;
+
+para usar uma interface utilize implements
+class Diretor extends Funcionario implements Autenticavel
+
+12 Métodos magicos
+
+Sempre que tentarmos representar um objeto como string 
+(seja com echo, passando por parâmetro ou retornando) 
+o método __toString é procurado, e se a classe o tiver, 
+seu retorno é utilizado.
+
+Impedir herança
+use o final, essa palavra é usada para impedir que essa classe seja extendida
+final  classe exemplo
+final protected function, vc pode ter herança na classe mas não pode sobreescrever esse metodo
+
+Traits
+Ter acesso a metodos privados de uma classe utilize uma trait
+copia codigo de outro lugar e injeta em uma classe
+de modo que todos os herdeiros da classe que usar a trait tera acesso ao metodo
+para ser implementada utilizes
+use NomeDaTrait

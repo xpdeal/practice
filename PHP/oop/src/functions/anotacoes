@@ -1,0 +1,19 @@
+Funções anonimas são uteis quanto temos uma estrutura que precisa estar 
+dentro de uma função, mas que vai ser utilizada em um único lugar. 
+Escopo reduzido, podemos passar essas funções para dentro de uma variável,
+passar como argumento dentro de outra função, retornar em um callback de 
+Função.
+# Funções anonimas não tem acesso ao scopo global
+Para acessar um valor de fora do scopo é preciso usar uma closure
+
+$multiplo = 5;
+
+$filtrar = function($item) use ($multiplo){
+    return ($item % $multiplo) == 0;
+};
+
+
+
+
+
+

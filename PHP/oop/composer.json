@@ -1,0 +1,19 @@
+{
+    "name": "elvis-leite/pratica-oop",
+    "description": "My day pract",
+    "type": "library",
+    "license": "open",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elvis Leite",
+            "email": "elvis7t@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
