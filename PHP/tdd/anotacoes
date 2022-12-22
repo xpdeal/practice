@@ -1,0 +1,84 @@
+composer require --dev phpunit/phpunit
+
+vendor/bin/phpunit --version
+
+codigo que que testa
+$this->assertEquals(2500,$maiorValor);
+self::assertEquals(2500,$maiorValor); é um metodo statico 
+
+comando que roda o teste passando o diretorio no caso a pasta tests
+>_ vendor/bin/phpunit tests
+
+test com cor
+
+>_ vendor/bin/phpunit --colors tests
+
+Uma classe de teste segue algumas regras:
+Começa com o nome da classe que está sendo testada e usa o sufixo Test,
+por exemplo: AvaliadorTest, em geral ClasseASerTestadaTest
+A classe de teste deve estender a classe TestCase
+O método de teste deve começar com test
+O método de teste deve ter um nome que diz o que estamos testando
+
+Os métodos que devem ser executados pelo PHPUnit devem começar com test. 
+Por exemplo: testGaranteQueDoisMaisDoisSaoQuatro. Nomes bem descritivos 
+são interessantes e você entenderá melhor o motivo durante o treinamento.
+Uma alternativa a iniciar o método com test é utilizar a anotação @test.
+Confira mais detalhes na documentação. https://phpunit.readthedocs.io/pt_BR/latest/annotations.html#test
+
+Uma classe que contenha testes de unidade, além de herdar da classe padrão
+do PHPUnit, deve ter seu nome terminado em Test. É uma convenção que a 
+classe de teste tenha o nome da classe que ela vai testar, além do sufixo
+Test. Por exemplo: classe a testar: Avaliador; classe de teste:
+AvaliadorTest.
+
+TESTE AUTOMATIZADO
+
+Dividir em 3 partes 
+
+1ª  Cenário - Arrange - Given
+2ª  Código - Act - When
+3ª  Sáida esperada - Assert - Then  
+
+03 - Classes e equivalencias -
+Sobre classes de equivalência do mundo de testes, que descrevem similaridades
+entre os cenários de testes
+Isto é importante para descobrir quantos testes devemos criar
+A ideia é criar nenhum teste a mais ou a menos
+Um teste também é um código que precisa ser mantido
+Para ordenar uma lista, você pode usar a função usort
+Para fatiar uma lista, você pode usar a função array_slice
+
+4 ORganizando tests
+
+Sobre Data Providers, os provedores de dados permitem que "alimentemos" os
+testes com cenários diversos, sem repetir o código e os asserts
+Que existe um método setUp, que é chamado antes de cada teste
+Que os provedores de dados sempre são executados antes do método setup
+Que caso queiramos executar algum código antes dos provedores de dados, 
+existe o método setUpBeforeClass
+Que, análogo ao setUp e setUpBeforeClass, existem os métodos tearDown e 
+tearDownAfterClass, para executar um código após os testes
+
+Exeções
+ O método expectException recebe por parâmetro a string contendo a classe
+ da exceção que deverá ser lançada durante a execução do teste. Além disso,
+ podemos também garantir uma mensagem específica, com o método expectExceptionMessage. 
+
+ Nesta aula, aprendemos:
+
+Como verificar que o código lança as exceções esperadas
+Em geral, exceções também fazem parte das regras de negócio e precisam ser verificadas
+Para tal o PHPUnit oferece os métodos expectException e expectExceptionMessage da classe TestCase:
+expectException(\NomeDaExcecao::class)
+expectExceptionMessage(mensagemDeExcecao)
+
+REFERENCES
+ "Análise de valor limite".
+"Particionamento de Equivalência".
+http://testwarequality.blogspot.com/p/tenicas-de-teste.html
+
+https://phpunit.readthedocs.io/en/8.1/writing-tests-for-phpunit.html?highlight=dataProvider#data-providers
+
+TDD
+https://tdd.caelum.com.br/
