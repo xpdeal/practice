@@ -1,0 +1,70 @@
+01 - Trabalhando com array
+Nessa aula, aprendemos sobre a estrutura de dados Array. 
+Vimos que um Array:
+agrupa vários valores
+também é chamado de vetor ou lista (isso depende da linguagem ou plataforma)
+usa-se [] ou array() para declarar um novo array
+acessa um elemento usamos os []
+dentro dos [] vem a posição do elemento
+possui um índice que por padrão começa com 0 (zero)
+para acessar todos os elementos podemos usar uma estrutura de repetição
+para saber quantos elementos um array tem existe a função count()
+
+02 - Arrays associativos
+Nessa aula, aprendemos como criar uma estrutura de dados mais complexa usando 
+e combinando arrays associativos. Vimos e aprendemos que:
+
+um array associativo sempre define elementos composto por uma chave e um valor
+a associação entre chave e valor é feito com =>
+a chave funciona como um índice explicito (definido por nós)
+o valor pode ser um valor primitivo ou outro array
+a chave deve ser do tipo inteiro ou string, todos os outros tipos o PHP tenta converter
+um array associativo também é chamado de mapa ou dicionário
+podemos combinar um array simples e array associativo para definir estruturas mais complexas
+o laço foreach oferece uma forma mais expressiva de iteração
+no foreach podemos acessar o índice e o valor do elemento da iteração
+arrays podem crescer e podemos adicionar novos elementos
+em arrays simples, com índice numérico, basta usar [] para adicionar um elemento no final 
+(por exemplo, $lista[] = 12;)
+nesse caso o PHP automaticamente incrementa o índice
+
+03 - Criando Funções
+Nessa aula falamos sobre função! Aprendemos:
+
+uma função encapsula uma funcionalidade/um código
+uma função usa a palavra chave function, possui um nome, pode ter parâmetros, 
+tem um corpo e pode ter um retorno
+para chamar uma função usamos o nome dela passando o valor dos parâmetros
+uma função pode especificar os tipos na declaração do parâmetro (a partir da versão 7),
+ como também o tipo do retorno
+
+ 04 - Interpolação e Require
+ Nessa aula falamos sobre vários recursos da linguagem PHP.
+
+Primeiro vimos como usar um array associativo dentro de uma string. Aprendemos:
+
+para acessar um valor de um array associativo dentro de string devemos omitir as aspas da chave, por exemplo "$conta[titular]"
+e alternativamente podemos usar chaves em volta do array, por exemplo: "{$conta['titular']}"
+Também vimos que um código PHP pode ser separado em vários arquivos e orquestrar a execução podem usar include, require e require_once:
+
+include não dá erro (apenas avisa) se o arquivo não existe, require dá erro
+require_once garante que o arquivo será incluído apenas uma vez
+Conhecemos que existem níveis de mensagens entre eles:
+
+E_NOTICE, PHP dá um aviso mas "se vira" e continua com a execução
+E_ERROR, PHP dá erro e para a execução do programa
+
+05 - Referencias e mais listas
+Nessa aula aprendemos sobre a passagem do parâmetro por valor ou por referência. O padrão do PHP é passar o parâmetro por valor, isto é fazer uma cópia do parâmetro. Quando usamos a passagem por referência temos acesso aos valores da variável original, pois passamos a referência apenas (não é feito nenhuma cópia).
+
+Para usar a passagem de referência basta colocar o caracter & na frente da variável.
+
+Voltamos a falar também sobre listas e como pegar vários elementos de uma vez, só usando a função list(..):
+
+$idadeList = [21, 23, 19, 25, 30, 41, 18];
+
+list($idadeVinicius, $idadeJoao, $idadeMaria) = $idadeList;COPIAR CÓDIGO
+Além disso, podemos remover um elemento usando a função unset(..).
+
+06 - 
+

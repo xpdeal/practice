@@ -1,0 +1,21 @@
+{
+    "name": "elvis/test",
+    "description": "Project dev TDD",
+    "type": "library",
+    "require": {
+        "phpunit/phpunit": "10.0.x-dev"
+    },
+    "license": "open",
+    "autoload": {
+        "psr-4": {
+            "Elvis\\Test\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elvis Leite",
+            "email": "elvis7t@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

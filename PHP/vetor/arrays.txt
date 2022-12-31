@@ -1,0 +1,11 @@
+Os 2 primeiros capítulos deste curso foram exclusivamente sobre Arrays no PHP. Isso se dá pelo fato desta estrutura de dados ser tão poderosa da forma como é implementada no PHP, mas algumas considerações DEVEM ser feitas.
+
+A primeira é: O array no PHP não é um array de verdade, como conhecemos nas demais linguagens. Internamente, os arrays são armazenados como HashTables (tabelas de espalhamento), e por isso eles são tão poderosos. Têm tamanho dinâmico, podem ter strings como seus índices e podem ser manipulados de diversas formas.
+
+Mas com grandes poderes vêm grandes responsabilidades, e muitas pessoas abusam destes poderes. Tome cuidado para não tratar o array no PHP como a única opção para modelar seus dados. Conheça as outras opções e saiba quando aplicar cada uma. Uma dica: Estude (muito) sobre orientação a objetos e não use arrays quando deveria estar utilizando objetos.
+
+Para ler mais a respeito de arrays em PHP e inclusive ver o exemplo utilizado neste último vídeo sobre os tipos de dados permitidos na chave de um array você pode consultar a página sobre arrays da documentação do PHP.
+
+É um assunto de extrema importância, então se surgir qualquer dúvida, não deixe de perguntar aqui no fórum.
+
+https://www.php.net/manual/pt_BR/language.types.array.php

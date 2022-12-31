@@ -73,6 +73,51 @@ Para tal o PHPUnit oferece os métodos expectException e expectExceptionMessage 
 expectException(\NomeDaExcecao::class)
 expectExceptionMessage(mensagemDeExcecao)
 
+//////////////////////////////Curso MOcks
+01 - Isolando o DAO
+Nesta aula, aprendemos:
+
+O que é injeção de dependências
+Técnica onde passamos as dependências no construtor de um objeto
+O conceito de um dublê de testes
+É um objeto que se parece com outro, para a realização de testes mais isolados
+Como importar classes com alias (utilizando as)
+Ou seja, dar outro nome à classe, na hora de importá-la com use
+
+02 - Conhecendo MOCKS e Stubs
+Nesta aula, aprendemos:
+
+Como criar um dublê de testes com o método createMock que o PHPUnit nos fornece
+Como personalizar um dublê para responder aos métodos como esperamos
+Como criar expectativas sobre os dublês, ou seja, garantir que determinados métodos sejam realmente chamados (com expects)
+Que existem tipos diferentes de dublês de testes:
+Dummy
+Fake
+Stub
+Spy
+Mock
+Como personalizar o nosso Mock, utilizando o getMockBuilder
+
+03 - Dubles atrapalhados
+Nesta aula, aprendemos:
+
+Como organizar o nosso código de testes
+Como fazer um Mock lançar uma exceção, com willThrowException
+Que uma simples função mail é o suficiente para enviar um e-mail com PHP
+
+04 - Verificaç~eos extras.
+Como verificar quais argumentos foram passados para um método (com with)
+Como capturar argumentos passados para métodos dos nossos mocks e fazer verificações neles (com willReturnCallback)
+Como definir a implementação completa de um método do nosso mock (com willReturnCallback)
+
+05 - Inimigos do Test
+Nesta aula, aprendemos:
+
+Que métodos estáticos dificultam os nossos testes, já que não podemos fazer a injeção de dependências
+Que chamadas ao sistema podem ser difíceis de testar se não utilizarmos injeção de dependências
+Que um código bem escrito é geralmente mais facilmente testável
+Que um código difícil de testar é um bom indicador de um código "mal escrito"
+
 REFERENCES
  "Análise de valor limite".
 "Particionamento de Equivalência".

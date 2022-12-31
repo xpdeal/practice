@@ -1,0 +1,7 @@
+Calcula (Elvis\Test\tests\model\Calcula)
+ [x] Soma valores
+
+Subtracao (Elvis\Test\tests\model\Subtracao)
+ [x] Subtrair
+ [ ] Valida se valores nao forem passados
+
