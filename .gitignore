@@ -1,2 +1,3 @@
 PHP/migration/vendor/*
 PHP/migration/composer.lock
+JS/Curso-jQuery/servidor/node_modules/*
