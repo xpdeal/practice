@@ -19,7 +19,7 @@ ON e.company_id = c.company_id";
 
    <div class="d-flex justify-content-center">
       <h1>Teste</h1>
-      <h2><?= Rec::getCountRows($sql);?></h1>
+      <h2><?= $rs->getCountRows($sql);?></h1>
    </div>
    <div class="container">
       <form class="form-horizontal" method="post" action="<?= $_SERVER['PHP_SELF']; ?>">
@@ -30,7 +30,7 @@ ON e.company_id = c.company_id";
                echo "Item delected is $item";
                $dados['employee_name']      = 'Elvis';
                echo '</div>';
-               Rec::Delete('employee', "employee_id = $item");
+               $rs->Delete('employee', "employee_id = $item");
             }
          }
 
@@ -58,19 +58,19 @@ ON e.company_id = c.company_id";
                  INNER JOIN company AS c
                  ON e.company_id = c.company_id";
 
-               Rec::Execute($sql);
+               $rs->Execute($sql);
 
-               while (Rec::DataGenerator()) {
+               while ($rs->DataGenerator()) {
                ?>
                   <tr>
-                     <td><?= Rec::fld("id"); ?></td>
-                     <td><?= Rec::fld("nome"); ?></td>
-                     <td><?= Rec::fld("company"); ?></td>
-                     <td><?= Rec::fld("email"); ?></td>
-                     <td><?= Rec::formFld("DATA"); ?></td>
+                     <td><?= $rs->fld("id"); ?></td>
+                     <td><?= $rs->fld("nome"); ?></td>
+                     <td><?= $rs->fld("company"); ?></td>
+                     <td><?= $rs->fld("email"); ?></td>
+                     <td><?= $rs->formFld("DATA"); ?></td>
                      <td>
                         <div class="form-check form-switch">
-                           <input type="checkbox" class="form-check-input" name="todelete[]" role="switch" value="<?= Rec::fld("id"); ?>">
+                           <input type="checkbox" class="form-check-input" name="todelete[]" role="switch" value="<?= $rs->fld("id"); ?>">
                         </div>
                      </td>
                   </tr>

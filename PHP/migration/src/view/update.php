@@ -18,11 +18,27 @@ $rs = new Rec();
             foreach ($_POST['todelete'] as $item) {
                echo '<div class="alert alert-primary" role="alert">';
                echo "Item delected is $item";
-               $dados['employee_name']      = 'Elvis';
+               $dados['employee_name']      = 'Camily Lolie';
+               $dados['employee_email']      = 'corp@gmail.com';
+               $dados['employee_birthdate']  = date("d/m/y");
                echo '</div>';
-               Rec::Update($dados, 'employee', "employee_id = $item");
+               $rs->Update($dados, 'employee', "employee_id = $item");
+            }
+            $dados =[];
+            $cod = $rs->setAutoCode("employee_id","employee");
+            $dados["employee_id"] =  $cod;
+            $dados["company_id"] = 1;
+            $dados["employee_name"] = "Camily";
+            $dados["employee_email"] = "cml@gmail.com";
+            $dados["employee_birthdate"] = "2005-01-31 08:10:00";               
+            if($rs->Insert($dados,"employee")){
+               echo '<div class="alert alert-primary" role="alert">';
+               echo "cadastrado com sucesso!";
+               echo '</div>';
+            
             }
          }
+        
 
          ?>
          <table class="table table-striped" id="example">
@@ -46,21 +62,23 @@ $rs = new Rec();
                  FROM
                      employee AS e
                  INNER JOIN company AS c
-                 ON e.company_id = c.company_id";
+                 ON e.company_id = c.company_id
+                 LIMIT 200
+                 ";
 
-               Rec::Execute($sql);
+               $rs->Execute($sql);
 
-               while (Rec::DataGenerator()) {
+               while ($rs->DataGenerator()) {
                ?>
                   <tr>
-                     <td><?= Rec::fld("id"); ?></td>
-                     <td><?= Rec::fld("nome"); ?></td>
-                     <td><?= Rec::fld("company"); ?></td>
-                     <td><?= Rec::fld("email"); ?></td>
-                     <td><?= Rec::formFld("DATA"); ?></td>
+                     <td><?= $rs->fld("id"); ?></td>
+                     <td><?= $rs->fld("nome"); ?></td>
+                     <td><?= $rs->fld("company"); ?></td>
+                     <td><?= $rs->fld("email"); ?></td>
+                     <td><?= $rs->formFld("DATA"); ?></td>
                      <td>
                         <div class="form-check form-switch">
-                           <input type="checkbox" class="form-check-input" name="todelete[]" role="switch" value="<?= Rec::fld("id"); ?>">
+                           <input type="checkbox" class="form-check-input" name="todelete[]" role="switch" value="<?= $rs->fld("id"); ?>">
                         </div>
                      </td>
                   </tr>

@@ -3,7 +3,7 @@
     "description": "This is my new project",
     "type": "library",
     "require": {
-        "elvis-leite/recordset-database": "dev-main",
+        "elvis-leite/recordset-database": "1.0.3",
         "robmorgan/phinx": "1.x-dev",
         "fzaninotto/faker": "1.9.x-dev"
     },
@@ -19,5 +19,8 @@
             "email": "elvis7t@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^10.1@dev"
+    }
 }
