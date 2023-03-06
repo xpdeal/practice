@@ -1,7 +1,7 @@
 PHP/migration/vendor/*
 PHP/migration/composer.lock
 JS/Curso-jQuery/servidor/node_modules/*
-JS/pratice/src/node_modules/*
+JS/fetch_cep/src/node_modules/*
 JS/pratice/src/package-lock.json
 JS/promise/node_modules/*
 JS/promise/package-lock.json
