@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -13,13 +13,13 @@
     <div class="d-flex justify-content-center">
         <h1>Consulta CEP</h1>
     </div>
-    <div class="conteiner">
-        <form action="">
+    <div class="container">
+        <form>
             <!-- Emmet -->
             <!-- div.form-group*5>label+input.form-control+small -->
             <div class="form-group">
                 <label for="cep">Cep</label>
-                <input type="text" id="cep" name="cep"  class="form-control cep" value="">
+                <input type="text" id="cep" name="cep"  maxlength="9" class="form-control" value="">
                 <small>00000-000</small>
             </div>
             <div class="form-group">
@@ -33,6 +33,7 @@
                 <small></small>
             </div>
             <div class="form-group">
+            <!-- alt + click no for-->
                 <label for="localidade">Localidade</label>
                 <input type="text" id="localidade" class="form-control">
                 <small></small>
@@ -45,6 +46,6 @@
         </form>
     </div>
 </body>
-<script src="index.js"></script>
+<script src="js/main.js"></script>
 
 </html>
