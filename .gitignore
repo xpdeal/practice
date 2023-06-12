@@ -5,3 +5,16 @@ JS/fetch_cep/src/node_modules/*
 JS/pratice/src/package-lock.json
 JS/promise/node_modules/*
 JS/promise/package-lock.json
+PHP/mvc/vendor/composer/LICENSE
+PHP/mvc/vendor/composer/InstalledVersions.php
+PHP/mvc/vendor/composer/installed.php
+PHP/mvc/vendor/composer/installed.json
+PHP/mvc/vendor/composer/ClassLoader.php
+PHP/mvc/vendor/composer/autoload_static.php
+PHP/mvc/vendor/composer/autoload_real.php
+PHP/mvc/vendor/composer/autoload_psr4.php
+PHP/mvc/vendor/composer/autoload_namespaces.php
+PHP/mvc/vendor/composer/autoload_classmap.php
+PHP/mvc/vendor/autoload.php
+PHP/mvc/composer.lock
+PHP/mvc/composer.json
