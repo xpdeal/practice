@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Teste</h1>
-</body>
-</html>
+    <h1>{{name}}</h1>
+    <hr>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+        <strong>{{job}}</strong>
+        </div>
+    </div>
+    
+

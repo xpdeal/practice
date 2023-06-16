@@ -18,14 +18,22 @@ class View
     }
 
     /**
-     * Renders a given view and returns its content as a string.
-     * @param string $view The name of the view to render.
-     * @throws Exception If the view file could not be found.
-     * @return string The rendered view content.
+     * Renders a string with dynamic content replacing placeholders.
+     * @param string $view The name of the view file to be rendered.
+     * @param array $vars An associative array with placeholders and their corresponding values.
+     * @return string The rendered string with placeholders replaced.
      */
-    public static function render(string $view): string
+    public static function render(string $view, array $vars = []): string
     {
         $contentView = self::getContentVIew($view);
-        return $contentView;
+        $keys = array_keys($vars);
+
+        $keys = array_map(
+            function ($item) {
+                return "{{" . $item . "}}";
+            },
+            $keys
+        );
+        return str_replace($keys, array_values($vars), $contentView);
     }
 }
