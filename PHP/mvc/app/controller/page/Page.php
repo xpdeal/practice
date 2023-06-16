@@ -5,7 +5,7 @@ namespace App\controller\page;
 use App\utils\View;
 
 
-class Page
+abstract class Page
 {
     /**
      * Returns a rendered page with provided title and content.

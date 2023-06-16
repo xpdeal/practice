@@ -3,7 +3,7 @@
 namespace App\utils;
 
 
-class View
+abstract class View
 {
 
     /**
@@ -14,7 +14,7 @@ class View
     private static function getContentVIew(string $view): string
     {
         $file = __DIR__ . "/../../resources/view/" . $view . ".php";
-        return file_exists($file) ? file_get_contents($file) : "sss";
+        return file_exists($file) ? file_get_contents($file) : "";
     }
 
     /**
