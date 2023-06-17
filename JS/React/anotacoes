@@ -1,0 +1,12 @@
+https://react.dev/
+Aula  1
+npm create vite@latest
+Project name "pro"
+Selecione  React
+selecion JavaScript + SWC
+cd pro
+npm install
+npm run dev
+--------------------------
+Aula 2
+Component 
