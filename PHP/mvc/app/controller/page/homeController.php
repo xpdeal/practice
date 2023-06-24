@@ -4,6 +4,7 @@ namespace App\controller\page;
 
 use App\utils\View;
 use App\controller\page\Page;
+use App\Model\entity\Organization;
 
 class homeController extends Page
 {
@@ -12,10 +13,11 @@ class homeController extends Page
      * @return string the rendered page content
      */
     public static function actionHome()
-    {
+    {   
+        $org = new Organization();
         $content =  View::render("pages/home", [
-            "name" => "Elvis",
-            "job" => "Dev"
+            "name" => $org->name,
+            "description" => $org->description
         ]);
         return parent::getPage("Titulo", $content);
     }

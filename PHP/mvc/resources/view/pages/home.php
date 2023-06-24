@@ -2,7 +2,7 @@
     <hr>
     <div class="container">
         <div class="d-flex justify-content-center">
-        <strong>{{job}}</strong>
+        <strong>{{description}}</strong>
         </div>
     </div>
     
