@@ -1,5 +1,0 @@
-site rect bootstrap
-https://react-bootstrap.netlify.app/docs/getting-started/introduction
-
-npm install react-bootstrap bootstrap
-npm install --save react-router-dom
