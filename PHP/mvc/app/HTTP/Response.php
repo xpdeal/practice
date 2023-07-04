@@ -9,7 +9,7 @@ class Response
      * http Status Code
      * @var integer
      */
-    private int $httpStatusCode = 200;
+    private int $httpStatusCode;
 
     /**
      * Received headers
@@ -31,7 +31,6 @@ class Response
 
     /**
      * A description of the entire PHP function.
-     *
      * @param datatype $httpStatusCode description
      * @param datatype $content description
      * @param string $contentType description
@@ -44,8 +43,6 @@ class Response
         $this->content = $content;
         $this->setContentType($contentType);
     }
-
-
 
     /**
      * Set the content type.
@@ -68,13 +65,33 @@ class Response
     public function addHeader($key, $value)
     {
         $this->responseHeaders[$key] = $value;
-
-        return $this;
     }
 
-    public function sendResponse()
+    /**
+     * Sends the HTTP response headers.
+     * @throws Some_Exception_Class description of exception
+     */
+    private function sendHeaders()
     {
         http_response_code($this->httpStatusCode);
-        echo $this->content;
+
+        foreach ($this->responseHeaders as $key => $value) {
+            header($key . ': ' . $value);
+        }
+    }
+
+    /**
+     * Send a response based on the content type.
+     * @return void
+     */
+    public function sendResponse()
+    {
+        $this->sendHeaders();
+
+        switch ($this->contentType) {
+            case 'text/html':
+                echo $this->content;
+                exit();
+        }
     }
 }
