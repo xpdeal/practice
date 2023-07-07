@@ -15,7 +15,7 @@ class Response
      * Received headers
      * @var array
      */
-    private array $responseHeaders = [];
+    private array $headers = [];
 
     /**
      * Content Type
@@ -64,7 +64,7 @@ class Response
      */
     public function addHeader($key, $value)
     {
-        $this->responseHeaders[$key] = $value;
+        $this->headers[$key] = $value;
     }
 
     /**
@@ -75,7 +75,7 @@ class Response
     {
         http_response_code($this->httpStatusCode);
 
-        foreach ($this->responseHeaders as $key => $value) {
+        foreach ($this->headers as $key => $value) {
             header($key . ': ' . $value);
         }
     }
