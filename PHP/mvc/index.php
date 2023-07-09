@@ -10,12 +10,14 @@ const URL = "http://localhost:3000/PHP/mvc";
 require __DIR__."/vendor/autoload.php";
 
 $ob = new Router(URL); 
-$ob->get('/', [
+$ob->get('/a', [
     function(){
         return new Response(200, homeController::actionHome());
     }
 
 ]);
+
+$ob->run()->sendResponse();
 
 // echo "<pre>";
 // var_dump($ob);exit();

@@ -3,7 +3,9 @@
 namespace App\HTTP;
 
 use App\Http\Request;
+use App\Http\Response;
 use Closure;
+use Exception;
 
 class Router
 {
@@ -23,7 +25,7 @@ class Router
      * Route Indice
      * @var array
      */
-    private array $route = [];
+    private array $routes = [];
 
     /**
      * Sntance Request
@@ -33,7 +35,7 @@ class Router
 
     /**
      * Constructs a new instance of the class.
-     * @param mixed $url The URL parameter.
+     * @param string $url The URL parameter.
      */
     public function __construct(string $url)
     {
@@ -52,19 +54,79 @@ class Router
     private function setPrefix()
     {
         $parseUrl = parse_url($this->url);
+
         $this->prefix = $parseUrl['path'] ?? '';
     }
 
+    /**
+     * Adds a GET route to the router.
+     * @param string $route The route to add.
+     * @param array $params Additional parameters for the route.
+     * @return mixed The result of adding the route.
+     */
     public function get(string $route, array $params = [])
     {
         return $this->addRoute('GET', $route, $params);
     }
 
+    /**
+     * Adds a route to the routing table.
+     * @param string $method The HTTP method for the route.
+     * @param string $route The URL pattern for the route.
+     * @param array $params An array of route parameters.
+     * @return void
+     */
     private function addRoute(string $method, string $route, array $params)
     {
         foreach ($params as $key => $value) {
             if ($value instanceof Closure) {
-                $params[$key] = $value($this->request);}
+                $params['controller'] = $value;
+                unset($params[$key]);
+                continue;
+            }
         }
+
+        $patternRoute = '/^' . str_replace('/', '\/', $route) . "$/";
+
+        $this->routes[$patternRoute][$method] = $params;
+    }
+
+    public function run()
+    {
+        try {
+            $route = $this->getRoute();
+            echo "<pre>";
+            print_r($route);
+            echo "</pre>";
+            exit;
+            // throw new Exception("Página não encontrada", 404);
+        } catch (Exception $e) {
+            return new Response($e->getCode(), $e->getMessage());
+        }
+    }
+
+    private function getRoute()
+    {
+        $uri = $this->getUri();
+
+        $httpMethod = $this->request->getHttpMethod();
+
+        foreach ($this->routes as $patternRoute => $methods) {
+            if (preg_match($patternRoute, $uri)) {
+                if ($methods[$httpMethod]) {
+                    return $methods[$httpMethod];
+                }
+                
+                throw new Exception("Metodo não é permitido", 405);
+            }
+        }
+        throw new Exception("URL não encontrada", 404);
+    }
+
+    private function getUri()
+    {
+        $uri = $this->request->getUri();
+        $xUri = strlen($this->prefix) ? explode($this->prefix, $uri) : [$uri];
+        return end($xUri);
     }
 }
