@@ -153,8 +153,8 @@ function draw_bar_graph($width, $heigth, $data, $max_value, $filename)
                 echo "<hr>";
                 echo '<div class="container" style="margin-left: 400px;">';
                 echo '<h4>Detalhes das categorias desencontradas: </h4>';
-                draw_bar_graph(480,240, $category_totals, 5, MM_UPLOADPATH0-, 'mysmatgraph.png');                
-                 echo '<img src="'.MM_UPLOADPATH.'mysmatgraph.png">';
+                // draw_bar_graph(480,240, $category_totals, 5, MM_UPLOADPATH0-, 'mysmatgraph.png');                
+                //  echo '<img src="'.MM_UPLOADPATH.'mysmatgraph.png">';
                 
             }
         }
