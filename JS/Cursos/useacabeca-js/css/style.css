@@ -1,0 +1,36 @@
+.container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .smile {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    /* height: 100px; */
+    /* border-radius: 50%; */
+    border: 15px solid black;
+    border-bottom: none;
+  }
+  
+  .smile::before, .smile::after {
+    /* content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%; */
+  }
+  
+  .smile::before {
+    /* top: 40%;
+    left: 25%; */
+  }
+  
+  .smile::after {
+    /* top: 40%;
+    right: 25%; */
+  }
+  
