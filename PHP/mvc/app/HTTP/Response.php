@@ -4,94 +4,91 @@ namespace App\HTTP;
 
 class Response
 {
-
     /**
-     * http Status Code
+     * Status code 
      * @var integer
      */
-    private int $httpStatusCode;
-
+    private int $statusCode;
     /**
-     * Received headers
+     *Headers
      * @var array
      */
     private array $headers = [];
-
     /**
      * Content Type
      * @var string
      */
-    private string $contentType = 'text/html';
-
+    private string $contentType;
     /**
-     * Response content
-     * @var mixed
+     * Content
+     *
+     * @var string
      */
-    private mixed $content;
+    private string $content;
 
-    /**
-     * A description of the entire PHP function.
-     * @param datatype $httpStatusCode description
-     * @param datatype $content description
-     * @param string $contentType description
-     * @throws Some_Exception_Class description of exception
-     * @return Some_Return_Value
-     */
-    public function __construct($httpStatusCode, $content, $contentType = 'text/html')
+
+    public function __construct(int $statusCode, string $content, string $contentType = 'text/html')
     {
-        $this->httpStatusCode = $httpStatusCode;
+        $this->statusCode = $statusCode;
         $this->content = $content;
         $this->setContentType($contentType);
     }
 
     /**
-     * Set the content type.
-     * @param string $contentType The content type to be set.
+     * Sets the content type for the response.
+     * @param string $contentType The content type to set.
      * @throws Some_Exception_Class Description of exception.
      * @return void
      */
-    public function setContentType(string $contentType)
+    private function setContentType(string $contentType): void
     {
         $this->contentType = $contentType;
         $this->addHeader('Content-Type', $contentType);
     }
 
     /**
-     * Adds a header to the response headers array.
-     * @param mixed $key The key of the header.
-     * @param mixed $value The value of the header.
-     * @return $this The current object.
+     * Adds a header to the headers array.
+     * @param string $key The key of the header.
+     * @param string $value The value of the header.
+     * @throws Some_Exception_Class If an error occurs.
+     * @return void
      */
-    public function addHeader($key, $value)
+    private function addHeader(string $key, string $value): void
     {
         $this->headers[$key] = $value;
     }
 
     /**
-     * Sends the HTTP response headers.
-     * @throws Some_Exception_Class description of exception
+     * Adds a header to the headers array.
+     * @param string $key The key of the header.
+     * @param string $value The value of the header.
+     * @throws Some_Exception_Class If an error occurs.
+     * @return void
      */
-    private function sendHeaders()
+    private function sendHeader(): void
     {
-        http_response_code($this->httpStatusCode);
-
+        http_response_code($this->statusCode);
         foreach ($this->headers as $key => $value) {
-            header($key . ': ' . $value);
+            header($key . ':' . $value);
         }
     }
 
     /**
-     * Send a response based on the content type.
+     * Sends the response based on the content type.
      * @return void
      */
-    public function sendResponse()
+    public function sendResponse(): void
     {
-        $this->sendHeaders();
+        $this->sendHeader();
 
         switch ($this->contentType) {
             case 'text/html':
                 echo $this->content;
-                exit();
+                exit;
+
+            case 'json':
+                # code...
+                break;
         }
     }
 }

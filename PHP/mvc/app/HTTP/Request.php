@@ -2,56 +2,46 @@
 
 namespace App\HTTP;
 
-
 class Request
 {
     /**
-     * URL Params ($_GET)
+     * Query Strings
      * @var array
      */
     private array $queryParams = [];
-
     /**
-     * Received variable on Post
+     * Posts
      * @var array
      */
     private array $postVars = [];
-
     /**
-     * Header of Request
-     *
+     * Headers 
      * @var array
      */
     private array $headers = [];
-
     /**
-     * Http Request Method
+     * Http Method
      * @var string
      */
     private string $httpMethod;
-
     /**
-     * Page's URI
+     * URI
      * @var string
      */
     private string $uri;
 
-    /**
-     * Creates a new instance of the class.
-     * @return void
-     */
     public function __construct()
     {
         $this->queryParams = $_GET ?? [];
         $this->postVars = $_POST ?? [];
         $this->headers = getallheaders();
-        $this->httpMethod = $_SERVER['REQUEST_METHOD'] ?? '';
-        $this->uri = $_SERVER['REQUEST_URI'] ?? '';
+        $this->httpMethod = $_SERVER['REQUEST_METHOD'];
+        $this->uri = $_SERVER['REQUEST_URI'];
     }
 
     /**
-     * Retrieves the query parameters as an array.
-     * @return array The query parameters.
+     * Get the value of queryParam
+     * @return datatype $this->queryParam The value of queryParam
      */
     public function getQueryParams(): array
     {
@@ -59,8 +49,8 @@ class Request
     }
 
     /**
-     * Get the post variables.
-     * @return array
+     * Retrieves the post variables.
+     * @return array The post variables.
      */
     public function getPostVars(): array
     {
@@ -68,8 +58,8 @@ class Request
     }
 
     /**
-     * Get header of Request
-     * @return  array
+     * Retrieves the headers of the object.
+     * @return array The headers of the object.
      */
     public function getHeaders(): array
     {
@@ -77,8 +67,8 @@ class Request
     }
 
     /**
-     * Retrieves the HTTP method used for the request.
-     * @return string The HTTP method used for the request.
+     * Returns the HTTP method of the object.
+     * @return string The HTTP method.
      */
     public function getHttpMethod(): string
     {
@@ -87,7 +77,7 @@ class Request
 
     /**
      * Retrieves the URI.
-     * @return datatype The URI.
+     * @return string The URI.
      */
     public function getUri(): string
     {

@@ -5,6 +5,21 @@ namespace App\utils;
 
 abstract class View
 {
+    /**
+     * Vars
+     * @var array
+     */
+    private static array $vars = [];
+
+    /**
+     * Initializes the function with the given array of variables.
+     * @param array $vars The array of variables to initialize the function with.
+     * @return void
+     */
+    public static function init(array $vars = []): void
+    {
+        self::$vars = $vars;
+    }
 
     /**
      * Returns the content of the given view if it exists, otherwise an empty string.    *
@@ -26,6 +41,9 @@ abstract class View
     public static function render(string $view, array $vars = []): string
     {
         $contentView = self::getContentVIew($view);
+
+        $vars = array_merge(self::$vars, $vars);
+        
         $keys = array_keys($vars);
 
         $keys = array_map(

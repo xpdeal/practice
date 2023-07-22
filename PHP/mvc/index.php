@@ -1,32 +1,18 @@
 <?php
 
-use App\HTTP\Request;
-use App\HTTP\Response;
-use App\controller\page\homeController;
+require __DIR__ . "/vendor/autoload.php";
+
 use App\Http\Router;
+use App\Utils\View;
 
 const URL = "http://localhost:3000/PHP/mvc";
 
-require __DIR__."/vendor/autoload.php";
-
-$ob = new Router(URL); 
-$ob->get('/a', [
-    function(){
-        return new Response(200, homeController::actionHome());
-    }
-
+View::init([
+   'URL' => URL
 ]);
 
-$ob->run()->sendResponse();
+$obRouter = new Router(URL);
 
-// echo "<pre>";
-// var_dump($ob);exit();
-
-// $resp =  new Response(500, 'ola');
-// $resp->sendResponse();
-
-//  $req =  new Request();
-// echo "<pre>";
-// var_dump($req);exit();
-
-// echo homeController::actionHome();
+include __DIR__ . '/routes/pages.php';
+$obRouter->run()
+   ->sendResponse();

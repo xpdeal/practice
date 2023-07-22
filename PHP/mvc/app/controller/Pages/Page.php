@@ -1,9 +1,8 @@
 <?php
 
-namespace App\controller\page;
+namespace App\controller\Pages;
 
 use App\utils\View;
-
 
 abstract class Page
 {
