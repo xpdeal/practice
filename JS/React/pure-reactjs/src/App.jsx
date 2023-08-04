@@ -4,6 +4,7 @@ import Data from "./components/Data";
 import Button from "./components/Button";
 import Table from "./components/Table";
 import Image from "./components/view/Image";
+import Hook from "./components/Hook";
 import "./App.css";
 import Article from "./components/Article";
 export default function App() {
@@ -20,7 +21,8 @@ export default function App() {
   return (
     <>
     <h3>App!</h3>
-      {conteudo}
+    <Hook/>
+      {/* {conteudo} */}
       {/* <h1>ButtonReact</h1>
       <h3>ButtonReact</h3>
       <Data />
