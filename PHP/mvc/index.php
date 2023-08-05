@@ -4,8 +4,11 @@ require __DIR__ . "/vendor/autoload.php";
 
 use App\Http\Router;
 use App\Utils\View;
+use \WilliamCosta\DotEnv\Environment;
 
-const URL = "http://localhost:3000/PHP/mvc";
+Environment::load(__DIR__);
+define('URL', getenv('URL'));
+// const URL = "http://localhost:3000/PHP/mvc";
 
 View::init([
    'URL' => URL

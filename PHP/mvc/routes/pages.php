@@ -15,6 +15,12 @@ $obRouter->get('/about', [
     }
 ]); 
 
+$obRouter->get('/depoimentos', [
+    function(){
+        return new Response(200, Pages\aboutController::actionAbout());
+    }
+]); 
+
 $obRouter->get('/page/{idPage}/{action}', [
     function($idPage, $action){
         return new Response(200, 'Page10 '.$idPage.' - '.$action);
