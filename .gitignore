@@ -18,3 +18,4 @@ PHP/mvc/vendor/composer/autoload_classmap.php
 PHP/mvc/vendor/autoload.php
 PHP/mvc/composer.lock
 PHP/mvc/composer.json
+PHP/mvc/vendor/composer/platform_check.php
