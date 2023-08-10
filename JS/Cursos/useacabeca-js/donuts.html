@@ -18,7 +18,7 @@
   </div>
   <div class="d-flex justify-content-center">
     <div class="container-fluid">
-      <form method="post" name="orderform" action="" class="col-md-6 offset-md-3">
+      <form method="post" name="orderform" action="donuts.php" class="col-md-6 offset-md-3">
         <div class="row mb-3">
           <label for="name" class="col-sm-6 col-form-label">Name:</label>
           <div class="col-sm-6">
@@ -50,28 +50,28 @@
         <div class="row mb-3">
           <label for="lastname" class="col-sm-6 col-form-label">Subtotal:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" name="password"  id="password"
+            <input type="text" class="form-control" name="subtotal"  id="subtotal"
               minlength="6" maxlength="9" size="9" placeholder="Confirm your password ">
           </div>
         </div>
         <div class="row mb-3">
           <label for="lastname" class="col-sm-6 col-form-label">Tax:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" name="password"  id="password"
+            <input type="text" class="form-control" name="tax"  id="tax"
               minlength="6" maxlength="9" size="9" placeholder="Confirm your password ">
           </div>
         </div>
         <div class="row mb-3">
           <label for="lastname" class="col-sm-6 col-form-label">Total:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" name="password"  id="password"
+            <input type="text" class="form-control" name="total"  id="total"
               minlength="6" maxlength="9" size="9" placeholder="Confirm your password ">
           </div>
         </div>
 
         <div class="form-grup">
           <div class="col-md-6 offset=md-3">
-            <button onclick="placeOrder.this.form" type="submit" id="enviar" class="btn btn-primary"><ion-icon name="send"></ion-icon> Place
+            <button onclick="placeOrder(this.form);" type="submit" id="enviar" class="btn btn-primary"><ion-icon name="send"></ion-icon> Place
               Order</button>
           </div>
         </div>
@@ -89,10 +89,10 @@
       const DONUTPRICE = 0.50;
       var numCakeDonuts = document.getElementById('cakedonuts').value;
       var numGlazedDonuts = document.getElementById('glazeddonuts').value;
-      var subtotal = (numCakeDonuts + numGlazedDonuts) * DONUTPRICE;
-      var tax = subtotal * TAXRATE;
-      var total = subtotal + tax;
-      document.getElementById("subtotal").value = "$" + subtotal.toFixed(2);
+      var subTotal = (numCakeDonuts + numGlazedDonuts) * DONUTPRICE;
+      var tax = subTotal * TAXRATE;
+      var total = subTotal + tax;
+      document.getElementById("subtotal").value = "$" + subTotal.toFixed(2);
       document.getElementById("tax").value = "$" + tax.toFixed(2);
       document.getElementById("total").value = "$" + total.toFixed(2);
     }
