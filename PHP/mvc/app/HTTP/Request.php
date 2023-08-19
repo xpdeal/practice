@@ -5,6 +5,12 @@ namespace App\HTTP;
 class Request
 {
     /**
+     * Router
+     * @var Router
+     */
+    private Router $router;
+
+    /**
      * Query Strings
      * @var array
      */
@@ -30,13 +36,26 @@ class Request
      */
     private string $uri;
 
-    public function __construct()
+    public function __construct($router)
     {
+        $this->router = $router;
         $this->queryParams = $_GET ?? [];
         $this->postVars = $_POST ?? [];
         $this->headers = getallheaders();
         $this->httpMethod = $_SERVER['REQUEST_METHOD'];
-        $this->uri = $_SERVER['REQUEST_URI'];
+        $this->setUri();
+    }
+
+    /**
+     * Set the value of uri
+     * @param string $uri
+     * @return void
+     */
+    public function setUri(): void
+    {
+        $this->uri = $_SERVER['REQUEST_URI'] ?? ' ';      
+        $xURI = explode('?', $this->uri);
+        $this->uri = $xURI[0];
     }
 
     /**
@@ -82,5 +101,15 @@ class Request
     public function getUri(): string
     {
         return $this->uri;
+    }
+
+    /**
+     * Get the value of router
+     *
+     * @return Router
+     */
+    public function getRouter(): Router
+    {
+        return $this->router;
     }
 }

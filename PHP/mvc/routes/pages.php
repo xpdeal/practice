@@ -17,7 +17,7 @@ $obRouter->get('/about', [
 
 $obRouter->get('/depoimentos', [
     function(){
-        return new Response(200, Pages\aboutController::actionAbout());
+        return new Response(200, Pages\testmonyController::actionTestimonies());
     }
 ]); 
 
