@@ -21,8 +21,14 @@ $obRouter->get('/depoimentos', [
     }
 ]); 
 
-$obRouter->get('/page/{idPage}/{action}', [
-    function($idPage, $action){
-        return new Response(200, 'Page10 '.$idPage.' - '.$action);
+$obRouter->post('/depoimentos', [
+    function($request){
+        return new Response(200, Pages\testmonyController::actionInsert($request));
     }
-]);
+]); 
+
+// $obRouter->get('/page/{idPage}/{action}', [
+//     function($idPage, $action){
+//         return new Response(200, 'Page10 '.$idPage.' - '.$action);
+//     }
+// ]);

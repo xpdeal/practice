@@ -14,7 +14,7 @@
 
     <section id="form">
         <h3> Envie seu depoimento</h3>
-        <form method="pos">
+        <form method="post">
             <div class="form-group">
                 <label>Nome</label>
                 <input type="text" class="form-control" name="nome" required>
