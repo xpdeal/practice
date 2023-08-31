@@ -22,56 +22,57 @@
         <div class="row mb-3">
           <label for="name" class="col-sm-6 col-form-label">Name:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control"  id="username" name="username"
-              minlength="3" maxlength="30" placeholder="Describe your Username">
+            <input type="text" class="form-control" id="username" name="username" minlength="3" maxlength="30"
+              placeholder="Describe your Username">
           </div>
         </div>
         <div class="row mb-3">
           <label for="lastname" class="col-sm-6 col-form-label"># of cake donuts:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" name="cakedonuts" required id="cakedonuts" 
-              maxlength="9" size="9" value="" onchange="updateOrder();"   placeholder="cakedonuts">
+            <input type="text" class="form-control" name="cakedonuts" required id="cakedonuts" maxlength="9" size="9"
+              value="" onchange="updateOrder();" placeholder="cakedonuts">
           </div>
         </div>
         <div class="row mb-3">
           <label for="lastname" class="col-sm-6 col-form-label"># of glazed donuts:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" name="glazeddonuts" required id="glazeddonuts" 
-              maxlength="9" size="9" value="" onchange="updateOrder();" placeholder="Confirm your password ">
+            <input type="text" class="form-control" name="glazeddonuts" required id="glazeddonuts" maxlength="9"
+              size="9" value="" onchange="updateOrder();" placeholder="Confirm your password ">
           </div>
         </div>
         <div class="row mb-3">
           <label for="lastname" class="col-sm-6 col-form-label">Minutes 'till pickup':</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" name="password" id="password"
-              minlength="6" maxlength="9" size="9" placeholder="Confirm your password ">
+            <input type="text" class="form-control" name="password" id="password" minlength="6" maxlength="9" size="9"
+              placeholder="Confirm your password ">
           </div>
         </div>
         <div class="row mb-3">
           <label for="lastname" class="col-sm-6 col-form-label">Subtotal:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" name="subtotal"  id="subtotal"
-              minlength="6" maxlength="9" size="9" disabled placeholder="Confirm your password ">
+            <input type="text" class="form-control" name="subtotal" id="subtotal" minlength="6" maxlength="9" size="9"
+              disabled placeholder="Confirm your password ">
           </div>
         </div>
         <div class="row mb-3">
           <label for="lastname" class="col-sm-6 col-form-label">Tax:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" name="tax"  id="tax"
-              minlength="6" maxlength="9" size="9" disabled placeholder="Confirm your password ">
+            <input type="text" class="form-control" name="tax" id="tax" minlength="6" maxlength="9" size="9" disabled
+              placeholder="Confirm your password ">
           </div>
         </div>
         <div class="row mb-3">
-          <label for="lastname" class="col-sm-6 col-form-label" >Total:</label>
+          <label for="lastname" class="col-sm-6 col-form-label">Total:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" name="total"  id="total"
-              minlength="6" maxlength="9" size="9" disabled placeholder="Confirm your password ">
+            <input type="text" class="form-control" name="total" id="total" minlength="6" maxlength="9" size="9"
+              disabled placeholder="Confirm your password ">
           </div>
         </div>
 
         <div class="form-grup">
           <div class="col-md-6 offset=md-3">
-            <button onclick="placeOrder(this.form);" type="submit" id="enviar" class="btn btn-primary"><ion-icon name="send"></ion-icon> Place
+            <button onclick="placeOrder(this.form);" type="submit" id="enviar" class="btn btn-primary"><ion-icon
+                name="send"></ion-icon> Place
               Order</button>
           </div>
         </div>
@@ -87,8 +88,14 @@
     function updateOrder() {
       const TAXRATE = 0.0925;
       const DONUTPRICE = 0.50;
-      var numCakeDonuts = document.getElementById('cakedonuts').value;
-      var numGlazedDonuts = document.getElementById('glazeddonuts').value;
+      var numCakeDonuts = parseDonuts(document.getElementById('cakedonuts').value);
+      if (isNaN(numCakeDonuts)) {
+        numCakeDonuts = 0;
+      }
+      var numGlazedDonuts = parseDonuts(document.getElementById('glazeddonuts').value);
+      if (isNaN(numGlazedDonuts)) {
+        numGlazedDonuts = 0;
+      }
       var subTotal = (numCakeDonuts + numGlazedDonuts) * DONUTPRICE;
       var tax = subTotal * TAXRATE;
       var total = subTotal + tax;
@@ -96,8 +103,16 @@
       document.getElementById("tax").value = "$" + tax.toFixed(2);
       document.getElementById("total").value = "$" + total.toFixed(2);
     }
-    
-    function placeOrder(){
+
+    function parseDonuts(donutString) {
+      numDonuts = parseInt(donutString);
+      if (donutString.indexOf("dozen") != -1){
+          numDonuts *= 12;
+          console.log(donutString);
+      }
+       return numDonuts; 
+    }
+    function placeOrder() {
       form.submit();
     }
   </script>
