@@ -115,8 +115,8 @@ class Router
         $params['variables'] = [];
 
         $patternVariable = '/{(.*?)}/';
-        if (preg_match_all($patternVariable, $route, $matches)) {           
-            $route = preg_replace($patternVariable,'(.*?)', $route);
+        if (preg_match_all($patternVariable, $route, $matches)) {
+            $route = preg_replace($patternVariable, '(.*?)', $route);
             $params['variables'] = $matches[1];
         }
 
@@ -150,12 +150,12 @@ class Router
         foreach ($this->route as $patternRoute => $method) {
 
             if (preg_match($patternRoute, $uri, $matches)) {
-                if (isset($method[$httpMethod])) {                    
-                    unset($matches[0]);                    
+                if (isset($method[$httpMethod])) {
+                    unset($matches[0]);
                     $keys = $method[$httpMethod]['variables'];
                     $method[$httpMethod]['variables'] = array_combine($keys, $matches);
                     $method[$httpMethod]['variables']['request'] = $this->request;
-                    
+
                     return $method[$httpMethod];
                 }
                 throw new Exception("Método não permitido", 405);
@@ -173,21 +173,26 @@ class Router
     {
         try {
             $route = $this->getRoute();
-       
+
             if (!isset($route['controller'])) {
                 throw new Exception("URL não pode ser processada", 500);
             }
-            
+
             $args = [];
-            
+
             $reflection = new ReflectionFunction($route['controller']);
-            foreach ($reflection->getParameters() as $parameter) {               
-                $name = $parameter->getName();               
+            foreach ($reflection->getParameters() as $parameter) {
+                $name = $parameter->getName();
                 $args[$name] = $route['variables'][$name] ?? '';
             }
             return call_user_func_array($route['controller'], $args);
         } catch (Exception $e) {
             return new Response($e->getCode(), $e->getMessage());
         }
+    }
+
+    public function getCurrentUrl(): string
+    {
+        return $this->url . $this->getUri();
     }
 }

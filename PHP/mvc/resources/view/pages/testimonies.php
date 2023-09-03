@@ -1,20 +1,14 @@
     <h1>Depoimentos </h1>
     <hr>
 
-    <section id="testmonies">
-        <div class="card text-dark mb-3">
-            <h5 class="card-header">Elvis <small>20/08/2023</small></h5>
-            <div class="card_body">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus at porro modi cum sequi nisi rerum natus accusantium sapiente eos sunt id, doloribus impedit explicabo facilis necessitatibus harum minima unde.
-            </div>
-        </div>
-
-    </section>
+    {{itens}}
+    
+    {{pagination}}
     <hr>
 
     <section id="form">
         <h3> Envie seu depoimento</h3>
-        <form method="post">
+        <form method="post" action="?page=1">
             <div class="form-group">
                 <label>Nome</label>
                 <input type="text" class="form-control" name="nome" required>
