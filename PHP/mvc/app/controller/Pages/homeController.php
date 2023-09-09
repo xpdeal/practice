@@ -12,7 +12,7 @@ class homeController extends Page
      * Renders the home page view with given title and content.
      * @return string the rendered page content
      */
-    public static function actionHome()
+    public static function actionHome(): string
     {
         $org = new Organization();
         $content =  View::render("pages/home", [

@@ -1,6 +1,8 @@
 <?php
 require __DIR__ . "/../vendor/autoload.php";
 
+use App\Http\Middleware\Maintenance;
+use App\Http\Middleware\Queue;
 use App\Utils\View;
 use \WilliamCosta\DotEnv\Environment;
 use \WilliamCosta\DatabaseManager\Database;
@@ -19,4 +21,12 @@ define('URL', getenv('URL'));
 
 View::init([
     'URL' => URL
+]);
+
+Queue::setMap([
+    'maintenance' => Maintenance::class
+]);
+
+Queue::setDefault([
+    'maintenance' 
 ]);

@@ -13,7 +13,7 @@ class testmonyController extends Page
      * Renders the home page view with given title and content.
      * @return string the rendered page content
      */
-    public static function actionTestimonies($request)
+    public static function actionTestimonies($request): string
     {
         $content =  View::render("pages/testimonies", [
             'itens' => self::actionTestimonyItems($request,$obPagination),

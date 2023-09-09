@@ -42,7 +42,7 @@ abstract class Page
         ]);
     }
 
-    public static function getPagination($request, $obPagination)
+    public static function getPagination($request, $obPagination): string
     {
         $pages = $obPagination->getPages();
 

@@ -4,25 +4,25 @@ use App\Http\Response;
 use App\controller\Pages;
 
 $obRouter->get('/', [
-    function(){
+    function () {
         return new Response(200, Pages\homeController::actionHome());
     }
 ]);
 
 $obRouter->get('/about', [
-    function(){
+    function () {
         return new Response(200, Pages\aboutController::actionAbout());
     }
-]); 
+]);
 
 $obRouter->get('/depoimentos', [
-    function($request){
+    function ($request) {
         return new Response(200, Pages\testmonyController::actionTestimonies($request));
     }
-]); 
+]);
 
 $obRouter->post('/depoimentos', [
-    function($request){
+    function ($request) {
         return new Response(200, Pages\testmonyController::actionInsert($request));
     }
 ]); 

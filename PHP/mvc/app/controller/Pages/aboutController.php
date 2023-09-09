@@ -12,7 +12,7 @@ class aboutController extends Page
      * Renders the home page view with given title and content.
      * @return string the rendered page content
      */
-    public static function actionAbout()
+    public static function actionAbout(): string
     {
         $org = new Organization();
         $content =  View::render("pages/about", [

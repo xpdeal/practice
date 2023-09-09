@@ -2,6 +2,7 @@
 
 namespace App\HTTP;
 
+use App\Http\Middleware\Queue;
 use Closure;
 use Exception;
 use App\Http\Request;
@@ -55,7 +56,7 @@ class Router
      * Retrieves the URI from the request and returns the last segment.
      * @return string The last segment of the URI.
      */
-    public function get(string $route, array $params = []): ?string
+    public function get(string $route, array $params = [])
     {
         return $this->addRoute('GET', $route, $params);
     }
@@ -67,7 +68,7 @@ class Router
      * @throws Some_Exception_Class Description of exception
      * @return string|null The response from the function or null if there is no response
      */
-    public function post(string $route, array $params = []): ?string
+    public function post(string $route, array $params = [])
     {
         return $this->addRoute('POST', $route, $params);
     }
@@ -78,7 +79,7 @@ class Router
      * @param array $params Optional parameters for the route.
      * @return string|null The result of adding the route.
      */
-    public function puth(string $route, array $params = []): ?string
+    public function put(string $route, array $params = [])
     {
         return $this->addRoute('PUT', $route, $params);
     }
@@ -89,7 +90,7 @@ class Router
      * @param array $params (Optional) Additional parameters for the route.
      * @return string|null The result of the deletion.
      */
-    public function delete(string $route, array $params = []): ?string
+    public function delete(string $route, array $params = [])
     {
         return $this->addRoute('DELETE', $route, $params);
     }
@@ -111,6 +112,8 @@ class Router
                 continue;
             }
         }
+
+        $params['middlewares'] = $params['middlewares'] ?? [];
 
         $params['variables'] = [];
 
@@ -185,7 +188,8 @@ class Router
                 $name = $parameter->getName();
                 $args[$name] = $route['variables'][$name] ?? '';
             }
-            return call_user_func_array($route['controller'], $args);
+            
+            return (new Queue($route['middlewares'], $route['controller'], $args))->next($this->request);
         } catch (Exception $e) {
             return new Response($e->getCode(), $e->getMessage());
         }
