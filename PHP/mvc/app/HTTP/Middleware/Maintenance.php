@@ -3,8 +3,10 @@
 namespace App\Http\Middleware;
 
 use Exception;
+use App\Http\Middleware\MiddlewareInterface;
 
-class Maintenance
+
+class Maintenance implements MiddlewareInterface
 {
     public function handle($request, $next)
     {

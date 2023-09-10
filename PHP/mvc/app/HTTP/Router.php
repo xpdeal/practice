@@ -188,7 +188,7 @@ class Router
                 $name = $parameter->getName();
                 $args[$name] = $route['variables'][$name] ?? '';
             }
-            
+
             return (new Queue($route['middlewares'], $route['controller'], $args))->next($this->request);
         } catch (Exception $e) {
             return new Response($e->getCode(), $e->getMessage());
@@ -198,5 +198,12 @@ class Router
     public function getCurrentUrl(): string
     {
         return $this->url . $this->getUri();
+    }
+
+    public function redirect($route)
+    {
+        $url = $this->url.$route;   
+        header('location: ' .$url);
+        exit;
     }
 }

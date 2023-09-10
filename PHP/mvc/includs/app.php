@@ -1,11 +1,13 @@
 <?php
 require __DIR__ . "/../vendor/autoload.php";
 
-use App\Http\Middleware\Maintenance;
-use App\Http\Middleware\Queue;
 use App\Utils\View;
+use App\Http\Middleware\Queue;
+use App\Http\Middleware\Maintenance;
 use \WilliamCosta\DotEnv\Environment;
 use \WilliamCosta\DatabaseManager\Database;
+use App\Http\Middleware\RequiredAdminLogin;
+use App\Http\Middleware\RequiredAdminLogout;
 
 Environment::load(__DIR__ . '/../');
 
@@ -24,7 +26,9 @@ View::init([
 ]);
 
 Queue::setMap([
-    'maintenance' => Maintenance::class
+    'maintenance' => Maintenance::class,
+    'required-admin-logout' => RequiredAdminLogout::class,
+    'required-admin-login' => RequiredAdminLogin::class
 ]);
 
 Queue::setDefault([
