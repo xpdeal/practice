@@ -3,18 +3,17 @@
 namespace App\controller\Admin;
 
 use App\utils\View;
-use App\model\entity\User;
+use App\Model\entity\User;
 use App\controller\Admin\Page;
 use App\Session\Admin\SessionAdmin;
+use App\controller\Admin\AlertController;
 
 class loginController extends Page
 {
 
     public static  function actionLogin($request, $errorMessage = null)
     {
-        $status = !is_null($errorMessage) ? View::render('admin/login/status', [
-            'message' => $errorMessage
-        ]) : '';
+        $status = !is_null($errorMessage) ? AlertController::getError($errorMessage) : '';
 
         $content = View::render('admin/login', [
             'status' => $status

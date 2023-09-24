@@ -1,6 +1,6 @@
 <?php
 
-namespace App\model\entity;
+namespace App\Model\entity;
 
 use WilliamCosta\DatabaseManager\Database;
 
