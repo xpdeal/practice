@@ -46,7 +46,7 @@ class Page
             $links .= View::render('admin/menu/link', [
                 'label' => $module['label'],
                 'link'  => $module['link'],
-                'current' => $hash == $currentModule ? 'text-danger': ''
+                'current' => $hash == $currentModule ? 'text-danger' : ''
             ]);
         }
 
