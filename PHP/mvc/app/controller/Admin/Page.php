@@ -14,11 +14,11 @@ class Page
         ],
         'testmonies' => [
             'label' => 'Depoimentos',
-            'link' => URL . '/testmonies'
+            'link' => URL . '/admin/testimonies'
         ],
         'users' => [
             'label' => 'Usuários',
-            'link' => URL . '/user'
+            'link' => URL . '/admin/user'
         ]
 
     ];
