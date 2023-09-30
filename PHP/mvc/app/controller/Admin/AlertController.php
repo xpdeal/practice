@@ -10,7 +10,7 @@ class AlertController
     public static function getSucess($message)
     {
         return View::render('admin/alert/status' , [
-            'tipo' => 'sucess',
+            'tipo' => 'success',
             'message' => $message
         ]);
     }

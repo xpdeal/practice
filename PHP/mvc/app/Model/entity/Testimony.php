@@ -8,8 +8,8 @@ use WilliamCosta\DatabaseManager\Database;
 class Testimony
 {
     public int $id;
-    public string $name = '';
-    public string $message = '';
+    public string $name;
+    public string $message;
     public string $data;
 
     public function cadastrar(): bool
@@ -30,8 +30,8 @@ class Testimony
             return null;
         }
 
-        $testimony = new self();
-        $testimony->id = $testimonyData['id'];
+        $testimony = new self();        
+        $testimony->id = $id; // Mapeamento manual
         $testimony->name = $testimonyData['nome']; // Mapeamento manual
         $testimony->message = $testimonyData['mensagem']; // Mapeamento manual
 
@@ -41,5 +41,18 @@ class Testimony
     public static function getTestimonies($where = null, $order = null, $limit = null, $fields = '*')
     {
         return (new Database('depoimentos'))->select($where, $order, $limit, $fields);
+    }
+    
+    public function atualizar()
+    {
+        return (new Database('depoimentos'))->update('id = '.$this->id, [
+            'nome' => $this->name,
+            'mensagem' => $this->message
+        ]);
+    }
+    
+    public function excluir()
+    {
+        return (new Database('depoimentos'))->delete('id = '.$this->id);
     }
 }

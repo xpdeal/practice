@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\controller\Admin\AlertController;
 use App\utils\View;
 use App\Http\Request;
 use App\Model\entity\Testimony;
@@ -14,7 +15,8 @@ class TestimoniesController extends Page
     {
         $content = View::render('admin/modules/testimonies/index', [
             'itens' => self::actionTestimonyItems($request, $obPagination),
-            'pagination' => parent::getPagination($request, $obPagination)
+            'pagination' => parent::getPagination($request, $obPagination),
+            'status' => self::getStatus($request)
         ]);
 
         return parent::getPanel('admin-depoimentos', $content, 'testmonies');
@@ -29,7 +31,7 @@ class TestimoniesController extends Page
         $paginaAtual = $queryParams['page'] ?? 1;
 
         //INSTANCIA DE PAGINAÇÂO
-        $obPagination = new Pagination($quantidadeTotal, $paginaAtual, 2);
+        $obPagination = new Pagination($quantidadeTotal, $paginaAtual, 10);
 
         $results = Testimony::getTestimonies(null, 'id DESC',  $obPagination->getLimit());
 
@@ -51,6 +53,7 @@ class TestimoniesController extends Page
             'title' => 'Cadastrar Depoimentos',
             'nome' => '',
             'mensagem' => '',
+            'status' => '',
         ]);
 
         return parent::getPanel('Cadastrar-depoimentos', $content, 'testmonies');
@@ -69,17 +72,78 @@ class TestimoniesController extends Page
 
     public static function getEditTestimony(Request $request, int $id): string
     {
-        $obTestmonyt = Testimony::getTestimonyById($id);            
-        if (!$obTestmonyt instanceof Testimony) {
+        $obTestmony = Testimony::getTestimonyById($id);            
+        if (!$obTestmony instanceof Testimony) {
             $request->getRouter()->redirect('/admin/testmonies');
         }
 
         $content = View::render('admin/modules/testimonies/form', [
             'title' => 'Editar Depoimentos',
-            'nome' => $obTestmonyt->name,
-            'mensagem' => $obTestmonyt->message,
+            'nome' => $obTestmony->name,
+            'mensagem' => $obTestmony->message,
+            'status' => self::getStatus($request)
         ]);
 
         return parent::getPanel('Editarar-depoimentos', $content, 'testmonies');
+    }
+    
+    public static function setEditTestimony(Request $request, int $id): void
+    {
+        $obTestmony = Testimony::getTestimonyById($id);            
+        if (!$obTestmony instanceof Testimony) {
+            $request->getRouter()->redirect('/admin/testmonies');
+        }
+        
+        $postVars = $request->getPostvars();       
+        $obTestmony->name = $postVars['nome'] ?? $obTestmony->name;
+        $obTestmony->message = $postVars['mensagem'] ?? $obTestmony->message;
+        $obTestmony->atualizar();
+        $request->getRouter()->redirect('/admin/testimonies/'.$obTestmony->id.'/edit?status=updated');
+    }
+    
+    private static function getStatus(Request $request) {
+        $queryParams = $request->getQueryParams();
+        
+        if(!$queryParams['status']){
+        return '';
+        }
+        
+        switch ($queryParams['status']) {
+            case 'created':
+                return AlertController::getSucess('Depoimento Criado com sucesso');
+                break;
+            case 'updated':
+                return AlertController::getSucess('Depoimento Atualizado com sucesso');
+                break;
+            case 'deleted':
+                return AlertController::getSucess('Depoimento excluido com sucesso');
+                break;
+        }
+    }
+    
+    public static function getDeleteTestimony(Request $request, int $id): string
+    {
+        $obTestmony = Testimony::getTestimonyById($id);            
+        if (!$obTestmony instanceof Testimony) {
+            $request->getRouter()->redirect('/admin/testmonies');
+        }
+
+        $content = View::render('admin/modules/testimonies/delete', [           
+            'nome' => $obTestmony->name,
+            'mensagem' => $obTestmony->message,
+        ]);
+
+        return parent::getPanel('Excluir-depoimentos', $content, 'testmonies');
+    }
+    
+    public static function setDeleteTestimony(Request $request, int $id): void
+    {
+        $obTestmony = Testimony::getTestimonyById($id);            
+        if (!$obTestmony instanceof Testimony) {
+            $request->getRouter()->redirect('/admin/testmonies');
+        }
+        
+        $obTestmony->excluir();
+        $request->getRouter()->redirect('/admin/testimonies?status=deleted');
     }
 }
