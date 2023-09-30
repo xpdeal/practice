@@ -9,7 +9,7 @@
                 Editar
             </button>
         </a>
-        <a href="{{URL}}/admin/testimonies/{{id}}/delite">
+        <a href="{{URL}}/admin/testimonies/{{id}}/delete">
             <button type="button" class="btn btn-danger">
                 Deletar
             </button>
