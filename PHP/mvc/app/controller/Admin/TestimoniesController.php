@@ -104,7 +104,7 @@ class TestimoniesController extends Page
     private static function getStatus(Request $request) {
         $queryParams = $request->getQueryParams();
         
-        if(!$queryParams['status']){
+        if(!isset($queryParams['status'])){
         return '';
         }
         
