@@ -1,4 +1,4 @@
-<h1>Excluir Depeimento</h1>
+<h1>Excluir Usuario</h1>
 
 <hr>
 
@@ -9,8 +9,8 @@
 
 <form method="post">
     <div class="form-group">
-    Deseja realmente exluir o depoimento de <b>{{nome}}</b>
-    com o texto "" <b>{{mensagem}}</b>?
+    Deseja realmente exluir o usuário <b>{{nome}}</b>
+     "" <b>{{mensagem}}</b>?
     </div>
     
     <div class="form-group mt-3">

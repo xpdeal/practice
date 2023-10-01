@@ -2,7 +2,7 @@
 
 <hr>
 
-<p>Seja bem vindo ao painel Wdev</p>
+<p>{{user}} Seja bem vindo ao painel Wdev</p>
 
 <p>Utilize o menuu superior para navegar nos modulos disponiveis</p>
 
