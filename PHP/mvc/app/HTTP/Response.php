@@ -24,10 +24,10 @@ class Response
      *
      * @var string
      */
-    private string $content;
+    private mixed $content;
 
 
-    public function __construct(int $statusCode, string $content, string $contentType = 'text/html')
+    public function __construct(int $statusCode, mixed $content, string $contentType = 'text/html')
     {
         $this->statusCode = $statusCode;
         $this->content = $content;
@@ -86,8 +86,8 @@ class Response
                 echo $this->content;
                 exit;
 
-            case 'json':
-                # code...
+            case 'aplication/json':
+                echo json_encode($this->content, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
                 break;
         }
     }

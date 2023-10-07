@@ -31,6 +31,11 @@ class Router
      * @var Request
      */
     private Request $request;
+    /**
+     * ContentType
+     * @var string
+     */
+    private string $contentType = 'text/html';
 
     public function __construct(string $url)
     {
@@ -38,7 +43,12 @@ class Router
         $this->url = $url;
         $this->setPrefix();
     }
-
+    
+    public function setContentType($contentType): void
+    {
+        $this->contentType = $contentType;
+    }
+    
     /**
      * Sets the prefix for the URL.
      * This function parses the URL and extracts the path from it. 
@@ -136,7 +146,7 @@ class Router
     {
         $uri = $this->request->getUri();
         $xUri = strlen($this->prefix) ? explode($this->prefix, $uri) : [$uri];
-        return end($xUri);
+        return rtrim(end($xUri), '/');
     }
 
     /**
@@ -191,7 +201,7 @@ class Router
 
             return (new Queue($route['middlewares'], $route['controller'], $args))->next($this->request);
         } catch (Exception $e) {
-            return new Response($e->getCode(), $e->getMessage());
+            return new Response($e->getCode(), $this->getErrorMessage($e->getMessage()), $this->contentType);
         }
     }
 
@@ -205,5 +215,26 @@ class Router
         $url = $this->url.$route;   
         header('location: ' .$url);
         exit;
+    }
+    
+    private function getErrorMessage(String $message): mixed
+    {
+        switch ($this->contentType) {
+            case 'aplication/json':
+               return [
+               'error' => $message
+               ];
+                break;
+            
+            default:
+                return $message;
+                break;
+        }
+    
+        match ($this->contentType) {
+           'aplication/json'  => [
+                'error' => $message
+           ]
+        };
     }
 }

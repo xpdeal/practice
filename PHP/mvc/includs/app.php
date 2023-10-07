@@ -5,6 +5,7 @@ use App\Utils\View;
 use App\Http\Middleware\Queue;
 use App\Http\Middleware\Maintenance;
 use \WilliamCosta\DotEnv\Environment;
+use App\Http\Middleware\ApiMiddleware;
 use \WilliamCosta\DatabaseManager\Database;
 use App\Http\Middleware\RequiredAdminLogin;
 use App\Http\Middleware\RequiredAdminLogout;
@@ -28,7 +29,8 @@ View::init([
 Queue::setMap([
     'maintenance' => Maintenance::class,
     'required-admin-logout' => RequiredAdminLogout::class,
-    'required-admin-login' => RequiredAdminLogin::class
+    'required-admin-login' => RequiredAdminLogin::class,
+    'api' => ApiMiddleware::class
 ]);
 
 Queue::setDefault([
