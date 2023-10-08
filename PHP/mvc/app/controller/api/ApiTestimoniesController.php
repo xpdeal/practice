@@ -62,4 +62,11 @@ class ApiTestimoniesController extends ApiController
             // 'message' => trim($obTestmony->message),
         ];
     }
+    
+    public static function setTestmimony(Request $request): mixed
+    {
+        return [
+        'sucesso' => true
+        ];
+    }
 }
