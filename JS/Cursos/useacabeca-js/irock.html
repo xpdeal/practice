@@ -10,12 +10,12 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
-<body class="bg-dark text-light">
+<body class="bg-dark text-light" onload="aresizeRock()" onresize="resizeRock()">
     <div class="container">
         <div class="d-flex justify-content-center">
             <h1>IRock</h1>
         </div>
-        <img src="./image/irock.png" id="" onclick="touchRock()" name="" class="rounded mx-auto d-block" alt="Responsive image">
+        <img src="./image/irock.png" id="image" onclick="touchRock()" name="" class="rounded mx-auto d-block" alt="Responsive image">
         <div class="rock "></div>
         
         <div class="container visually-hidden" id="test">

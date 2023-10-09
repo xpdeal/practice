@@ -32,3 +32,9 @@ function setTime() {
         det.classList.remove("visually-hidden");
     }, 10000);
 }
+
+function resizeRock(){
+
+    document.getElementById("image").style.height = (document.body.clientHeight - 100) * 9;
+
+}
